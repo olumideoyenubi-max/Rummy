@@ -23,7 +23,7 @@ const WOOD_BG = `
 
 /* ============================== DECK HELPERS ============================== */
 
-function freshDeckHalf(deckIdx) {
+export function freshDeckHalf(deckIdx) {
   const cards = [];
   SUITS.forEach((suit) => {
     for (let rank = 1; rank <= 13; rank++) {
@@ -45,11 +45,11 @@ function shuffle(arr) {
   return a;
 }
 
-function isWild(card, wildRank) {
+export function isWild(card, wildRank) {
   return card.isPrintedJoker || card.rank === wildRank;
 }
 
-function pointValue(card, wildRank) {
+export function pointValue(card, wildRank) {
   if (isWild(card, wildRank)) return 0;
   if (card.rank === 1) return 1;
   if (card.rank >= 11) return 10;
@@ -63,7 +63,7 @@ function cardKey(c) {
 /* ============================== MELD VALIDATION ============================== */
 
 // Returns { type: 'set'|'sequence', pure: bool } or null if invalid
-function validateGroup(cards, wildRank) {
+export function validateGroup(cards, wildRank) {
   if (!cards || cards.length < 3) return null;
   const wilds = cards.filter((c) => isWild(c, wildRank));
   const nonWilds = cards.filter((c) => !isWild(c, wildRank));
@@ -93,7 +93,7 @@ function validateGroup(cards, wildRank) {
   return null;
 }
 
-function validateDeclare(groups, wildRank) {
+export function validateDeclare(groups, wildRank) {
   if (groups.length === 0) return { valid: false, reason: "No melds formed yet." };
   for (const g of groups) {
     if (g.cards.length < 3) return { valid: false, reason: "Every meld needs at least 3 cards." };
