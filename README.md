@@ -58,3 +58,7 @@ top-to-bottom or split apart later if you want to grow the project.
 - **ES7+ React/Redux/React-Native snippets**
 - **Tailwind CSS IntelliSense**
 - **Prettier**
+
+## License
+
+Copyright © 2026 Olumide Oyenubi. All rights reserved. See [LICENSE](LICENSE).
